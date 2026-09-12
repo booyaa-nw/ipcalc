@@ -1,9 +1,12 @@
 [project]
 name = "ipcalc"
 version = "0.1.0"
-description = ""
+description = "IPv4 / IPv6 のアドレス・マスクからネットワーク情報を計算するCLIツール"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "common",
+    "rich>=13",
+]
 
 [project.scripts]
 ipcalc = "ipcalc.cli:main"
@@ -14,3 +17,11 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ipcalc"]
+
+[tool.uv.sources]
+common = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
